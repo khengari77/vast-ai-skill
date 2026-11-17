@@ -1,0 +1,14 @@
+# local artifacts, never publish
+__pycache__/
+*.pyc
+*.log
+guard_*.log
+results/
+vast-runs/
+.env
+.env.*
+
+# editor / OS
+.DS_Store
+.idea/
+.vscode/
