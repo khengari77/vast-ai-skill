@@ -71,9 +71,10 @@ destination and the account credit. Fix the `MISS` lines before renting.
 ### 1. Estimate and get approval
 
 Work out, before searching:
-- **GPU memory**: the largest model plus activations. Quantised 27-31B LLMs need a 44 GB or larger card (A40 or
-  A6000), and they fail on 24 GB while *loading*. A 2-3M-parameter model fits on any 8 GB card. A BERT-base
-  fine-tune fits on a 12 GB card.
+- **GPU memory**: the largest model plus activations. A 27-31B int4 model is ~15-16 GB of weights, but loading
+  bf16 weights and quantising on the fly peaks at ~2×; with vLLM's default `gpu_memory_utilization` it fails on
+  24 GB during load. Rent 40-48 GB (A40 or A6000) unless the checkpoint is already AWQ/GPTQ and the context
+  stays short. A 2-3M-parameter model fits on any 8 GB card. A BERT-base fine-tune fits on a 12 GB card.
 - **Hours** of compute, padded by about 30% for setup and the image pull.
 - **GB in** (every model, dataset and wheel the box downloads) and **GB out** (what comes back).
 - **Disk**: the largest model plus about 50% headroom. Plan to delete each model's HF cache (`hub` and `xet`)

@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: ssh-permission-denied
+expected_outcome: |
+  The answer considers the host-side authorized_keys ownership and mode problem, names the onstart
+  command that fixes it, and checks the host logs before concluding the box is broken.

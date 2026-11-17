@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: int4-30b-vram
+expected_outcome: |
+  A qualified no: 24 GB is not the safe choice for a 27-31B int4 model, it can fail while loading, and
+  40-48 GB is the practical minimum unless the checkpoint is already quantised and the context is short.

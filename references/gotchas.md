@@ -11,7 +11,7 @@ Each entry was hit for real and cost time or money. Symptom first, then the caus
 | `vastai destroy instance <id>` does nothing | It prompts `[y/N]`, and with no TTY it aborts silently | Always pass `-y`. |
 | Instances you don't recognise | The account is shared with other projects | Leave them alone. Before any destroy, check the label, or ssh in and look for your project dir. |
 | Balance falls about 2× faster than $/h suggests | Per-GB download pricing (`inet_down_cost`), plus re-downloads after the disk filled | Rank on total cost (`rank_offers.py`). Size the disk properly. Delete each model's HF cache (`~/.cache/huggingface/hub` and `xet`) after use. |
-| A 24 GB card OOMs while *loading* a 27-31B int4 model | Too small. These need a 44 GB or larger card. | Rent an A40 or A6000 (about $0.40-0.50/h each). |
+| A 24 GB card OOMs while *loading* a 27-31B int4 model | Peak memory is about 2× the final size when bf16 weights are quantised on the fly, and vLLM reserves ~90% of the card before profiling the KV cache. The finished weights (~15-16 GB) would fit; the load does not | A pre-quantised AWQ/GPTQ checkpoint, batch 1 and a short context can squeeze into 24 GB. Otherwise rent 40-48 GB (A40 or A6000, ~$0.40-0.50/h). |
 
 ## SSH
 

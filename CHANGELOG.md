@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.1 — 2026-11-17
+
+- Qualify the 24 GB / 27-31B int4 claim: the observed OOM comes from on-the-fly quantisation and vLLM's
+  default memory reservation, not from a universal weight-size limit. Found by the `int4-30b-vram` eval.
+- Add `evals/`: three offline cases (total-cost estimate, int4 sizing, ssh permissions) with graders.
+
 ## v0.1.0 — 2026-11-17
 
 First public release.

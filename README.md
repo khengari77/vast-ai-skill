@@ -114,6 +114,13 @@ Three independent layers, so one failing never means a runaway bill:
 The skill also assumes accounts are shared: label every instance, and only destroy instances you created
 in this session.
 
+## Evaluations
+
+`evals/` holds three offline cases (cost estimate, int4 sizing, ssh permissions). They are graded
+assertions, not live rentals: every case forbids creating, starting or stopping an instance. Run them with
+`claude plugin eval .` or any harness that reads the case folders; results and the reviewer live in a
+sibling `vast-ai-skill-workspace/` directory.
+
 ## Troubleshooting
 
 `references/gotchas.md`. Most "dead box" reports are a host-key prompt, a missing ssh-agent, or a

@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: estimate-total-cost
+expected_outcome: |
+  A host-selection and cost plan that prices the whole job (GPU/disk hours plus per-GB network in and
+  out), states a hard cap, asks for approval before renting, and checks the machine is ready first.
